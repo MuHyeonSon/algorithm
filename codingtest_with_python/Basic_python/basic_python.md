@@ -100,7 +100,7 @@
     ```python
     a.append() #리스트에 원소 하나 삽입
     a.sort() # 오름차순 정렬
-    a.sort(reverse) # 내림차순 정렬
+    a.sort(reverse = True) # 내림차순 정렬
     a.insert(삽입할 위치 인덱스, 삽입할 값)
     a.count(특정 값) # 리스트에서 특정 값을 가지는 데이터의 개수를 셈
     a.remove(특정 값) # 특정한 값을 가지는 원소 제거 (값을 가지는 원소가 여러 개면 하나만 제거한다.)
