@@ -1,4 +1,6 @@
 # algorithm
 The code about algorithm
 
-python
+- 2021 spring semester algorithm
+- coding test with python
+
