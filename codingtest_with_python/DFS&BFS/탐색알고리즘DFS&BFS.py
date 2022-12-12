@@ -84,13 +84,64 @@ from collections import deque
 
 def bfs(graph,visited):
   queue = deque()
-  queue.append(graph[0][0]) # 시작 노드를 큐에 삽입
-  visited[0] = True # 시작 노드 방문 처리
-  while visited not in False:
+  queue.append(graph[1][0]) # 시작 노드를 큐에 삽입
+  visited[1] = True # 시작 노드 방문 처리
+  while visited[1:] not in False:
     node = queue.popleft()
     for n in graph(node):
-      if visited[node] == False:
-        queue.append(graph[node])
+      if visited[n] == False:
+        queue.append(graph[n])
         visited[node] == True 
 
-### DFS 함수 정의
+
+
+### BFS 함수 정의
+
+from collections import deque
+
+#### 내가 구현한 것
+def bfs(graph,start,visited):
+  queue = deque()
+  queue.append(start) # 시작 노드를 큐에 삽입
+  visited[v] = True # 시작 노드 방문 처리
+  while False in visited[1:] or len(queue) != 0: ##########################
+    node = queue.popleft()
+    print(node, end = ' ')
+    for adjacency_node in graph[node]:
+      if visited[adjacency_node] == False: ##########################
+        queue.append(adjacency_node)
+        visited[adjacency_node] = True 
+
+#### 교재에서 구현한 것
+def bfs(graph,start,visited):
+  queue = deque([start])
+  # 현재 노드를 방문 처리
+  visited[start] = True
+  # 큐가 빌 때까지 반복
+  while queue: ##########################
+    # 큐에서 하나의 원소를 뽑아 출력
+    v = queue.popleft()
+    print(v, end=' ')
+    # 해당 원소와 연결된, 아직 방문하지 않은 원소들을 큐에 삽입
+    for i in graph[v]: 
+      if not visited[i]:##########################
+        queue.append(i)
+        visited[i] = True
+
+#### 각 노드가 연결된 정보를 리스트 자료형으로 표현
+graph = [
+    [],
+    [2,3,8],
+    [1,7],
+    [1,4,5],
+    [3,5],
+    [3,4],
+    [7],
+    [2,6,8],
+    [1,7]
+]
+
+#### 각 노드가 방문된 정보
+visited = [False] * 9
+
+bfs(graph,1,visited)
