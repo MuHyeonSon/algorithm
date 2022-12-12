@@ -72,7 +72,6 @@ visited = [False]*9
 dfs(graph, 1, visited)
 
 
-
 ## BFS는 큐 자료구조 이용하는 것이 정석 (탐색 수행함에 있어 O(N)소요)
 ## 동작방식
 ### 1. 탐색 시작 노드를 큐에 삽입하고 방문 처리
@@ -80,5 +79,18 @@ dfs(graph, 1, visited)
 ### 3. 과정 2를 수행할 수 없을 때까지 반복
 
 ## 5-9.py BFS 예제
+
+from collections import deque
+
+def bfs(graph,visited):
+  queue = deque()
+  queue.append(graph[0][0]) # 시작 노드를 큐에 삽입
+  visited[0] = True # 시작 노드 방문 처리
+  while visited not in False:
+    node = queue.popleft()
+    for n in graph(node):
+      if visited[node] == False:
+        queue.append(graph[node])
+        visited[node] == True 
 
 ### DFS 함수 정의
