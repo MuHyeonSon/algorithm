@@ -44,3 +44,39 @@ for i in range(len(array)):
   array[i], array[min_index] = array[min_index], array[i] # 스와프
 
 print(array)
+
+
+## 삽입정렬 소스코드 (6-3) ## key point, 한 칸씩 이동(스와프)!!
+
+# 나의 풀이
+
+array = [7,5,9,0,3,1,6,2,4,8]
+
+for i in range(1,len(array)):
+  for j in range(i,0,-1):
+    minimum_index = -1
+    if array[j-1] > array[i]:
+      minimum_index = j-1
+  if minimum_index != -1:    
+    array.insert(minimum_index,array[i])
+    array.pop(i+1)
+    print(array)
+
+print(array)
+      
+
+    
+# 나의 풀이 (Product Code)
+
+
+    
+# 교재 풀이
+
+array = [7,5,9,0,3,1,6,2,4,8]
+
+for i in range(1,len(array)):
+  for j in range(i,0,-1):
+    if array[j] < array[j-1]:
+      array[j], array[j-1] = array[j-1], array[j]
+
+print(array)
