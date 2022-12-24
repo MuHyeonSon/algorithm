@@ -231,3 +231,9 @@ def setting(data):
 
 result = sorted(array,key = setting)  
 print(result)
+#Z
+
+
+
+
+
