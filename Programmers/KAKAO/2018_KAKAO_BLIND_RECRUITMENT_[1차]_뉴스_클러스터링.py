@@ -10,28 +10,8 @@ def solution(str1, str2):
     # 교집합의 원소의 수와 합집합 원소의 수 구하기
     share = 0
     sum_of_set = 0
-    """
-    if len(str1_list) > len(str2_list):
-        for x in range(len(str2_list)):
-            if str2_list[x] in str1_list :
-                share += min(str1_list.count(str2_list[x]),str2_list.count(str2_list[x]))
-                sum_of_set += max(str1_list.count(str2_list[x]),str2_list.count(str2_list[x]))
-                for item in str1_list:
-                    if item == str2_list[x]: 
-                        str1_list.remove(str2_list[x])
-        sum_of_set += len(str1_list)                
-    else :
-        for x in range(len(str1_list)):
-            if str1_list[x] in str2_list :
-                share += min(str2_list.count(str1_list[x]),str1_list.count(str1_list[x]))
-                sum_of_set += max(str2_list.count(str1_list[x]),str1_list.count(str1_list[x]))
-                for item in str2_list:
-                    if item == str1_list[x]: 
-                        str2_list.remove(str1_list[x])
-        sum_of_set += len(str2_list)  
-        
-    """
-        
+    
+    # Counter 이용, & | 연산 
             
 
     
