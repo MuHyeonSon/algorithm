@@ -12,25 +12,20 @@
 
 import heapq
 import sys
-from heapq import heappop
-from heapq import heappush
-from sys import stdin
-
-#input = sys.stdin.readline
 INF = int(1e9) # 무한을 의미하는 값 (10억)
 
 # 노드의 개수와 간선의 개수 입력받기
-n, m = map(int,input().split())
+n, m = map(int,sys.stdin.readline().split())
 # 시작 노드 번호를 입력받기
 start = int(input())
 # 각 노드에 연결되어 있는 노드에 대한 정보를 담는 리스트를 만들기
-graph = [[] for i in range(n+1)] ######### 2차원 리스트 초기화 방식 까먹지 말 것
+graph = [[] for i in range(n + 1)] ######### 2차원 리스트 초기화 방식 까먹지 말 것
 # 최단 거리 테이블을 모두 무한으로 초기화
-distance = [INF]*(n+1)
+distance = [INF] * (n + 1)
 
 # 모든 간선 정보를 입력받기
 for _ in range(m):
-  a, b, c = map(int,input().split()) 
+  a,b,c = map(int,sys.stdin.readline().split())
   # a노드에서 b노드까지 가는 비용이 c만큼 듬
   graph[a].append((b,c))
 
