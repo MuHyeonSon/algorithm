@@ -51,5 +51,4 @@ print(result_s + str(total_number))
 알게 된 점
 1. print(''.join(리스트)) 형태로 작성하면 리스트를 문자열로 변환하여 출력할 수 있다.
 
-
 """
