@@ -17,18 +17,18 @@
 
 n = int(input()) # n번째 못생긴 수를 찾을 때의 n을 입력받음
 dp = [0, 1]
+ugly = [2, 3, 5]
 count = 0
 index = 1
 if n == 1:
     print(1)    
 else:
     while True:
-        dp.append(dp[index] * 2)
-        count += 1
-        dp.append(dp[index] * 3)
-        count += 1
-        dp.append(dp[index] * 3)
-        count += 1         
+        for u in ugly:
+            number = dp[index] * u
+            if number not in dp:
+                dp.append(number)
+                count += 1        
         if count >= n:
             dp.sort()
             print(dp[n])
@@ -40,12 +40,48 @@ else:
 
 # 교재 풀이
 
+n = int(input())
+
+ugly = [0] * n # 못생긴 수를 담기 위한 테이블(1차원 DP 테이블)
+ugly[0] = 1 # 첫 번째 못생긴 수는 1
+
+## 2배, 3배, 5배를 위한 인덱스
+i2 = i3 = i5 = 0
+## 처음에 곱셈값을 초기화
+next2, next3, next5 = 2, 3, 5
+
+## 1부터 n까지의 못생긴 수를 찾기
+for l in range(1, n):
+    # 가능한 곱셈 결과 중에서 가장 작은 수를 선택
+    ugly[l] = min(next2, next3, next5)
+    # 인덱스에 따라서 곱셈 결과를 증가
+    if ugly[l] == next2:
+        i2 += 1
+        next2 = ugly[i2] * 2
+    if ugly[l] == next3:
+        i3 += 1
+        next3 = ugly[i3] * 3
+    if ugly[l] == next5:
+        i5 += 1
+        next5 = ugly[i5] * 5
+## n번째 못생긴 수를 출력
+print(ugly[n - 1])
+
+ 
 # 느낀점
-"""
-"""
 
 """
-📰 Codingtest_with_python_part3_DynamicProgramming_못생긴수
-"이것이취업을위한코딩테스트다" 학습 순서 3단계
-Part3 기출문제 DynamicProgramming 문제 풀이 느낀점
+어떻게 풀어야될지 처음에 고민을 많이 하다가 DP유형임을 알고 있기에
+작은 해가 모여 큰해가 되는 방식으로 문제를 풀어보고자 하였고, 
+DP테이블(못생긴수 리스트)를 만들어 가장 마지막 인덱스 값에 2, 3, 5를 곱하여, 각각 그 수가
+DP테이블에 없다면 추가하고 그때마다 카운트를 하여, 이 카운트가 n과 같거나 n을 넘어갔을 떄에
+중단한 뒤, n번째 수를 찾기 위해 리스트를 한 번 정렬한 뒤, n번째 수를 출력하는 방법으로 구현했다.
+
+하지만, 교재의 풀이와는 조금 달랐다.
+못생긴 수에 2, 3 혹은 5를 곱한 수 또한 '못생긴 수'에 해당된다는 점은 나도 잘 생각하였지만,
+다소 복잡하지만 효율적으로 코드를 작성하였는데,
+
+1. 현재 상태의 못생긴 수들이 담긴 리스트의 모든 원소들에 대해 2,3,5 각각을 곱한 것들을 모두 반영하기 위해,
+    2배, 3배, 5배 인덱스를 따로 두었다는 점
+2. 오름차순 정렬이 자동으로 되도록 next2, next3, next5 등의 변수를 사용하고 그중 가장 작은 값을 해당차례의 못생긴 수로 선정한다는 점
 """
