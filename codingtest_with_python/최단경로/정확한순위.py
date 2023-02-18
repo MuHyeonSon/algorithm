@@ -23,8 +23,6 @@ for i in range(1, n + 1):
 for _ in range(m):
     a, b = map(int, input().split())
 
-## 다시생각해보니 다익스트라 써야될 것 같아
-## 연결 안되어 있으면 무한대로 놓고 학생들끼리 연결정보는 간선으로
     
     
 # 교재 풀이
