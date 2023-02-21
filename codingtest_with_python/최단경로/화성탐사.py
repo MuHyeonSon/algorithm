@@ -29,16 +29,16 @@ INF = int(1e9)
 for number_of_test_case in range(int(input())):
     n = int(input())
     start = (0, 0)
-    graph = [[] * (n + 1) for _ in range(n + 1)]
+    graph = [[[] for _ in range(n)] for _ in range(n)]
     Map = []
-    distance = [[INF] * (n + 1) for _ in range(n + 1)]
+    distance = [[INF] * (n) for _ in range(n)]
     # 맵정보 입력받기
     for _ in range(n):
         Map.append(list(map(int, input().split())))
     # 입력받은 맵정보로 distance 테이블에 값 반영
     for i in range(n):
         for j in range(n):
-            graph[i][j] = Map[i][j]
+            distance[i][j] = Map[i][j]
     # 입력받은 맵정보로 graph 정보 입력
     dr = [-1, 1, 0, 0]
     dc = [0, 0, -1, 1]
@@ -49,6 +49,8 @@ for number_of_test_case in range(int(input())):
                 nc = j + dc[k]
                 if 0 <= nr < n and 0 <= nc < n and Map[nr][nc] != INF:
                     # i,j 위치와 연결된 nr, nc 노드를 저장하고 그 노드로 가기위한 비용 저장
+                    print(i, j)
+                    print(graph)
                     graph[i][j].append(((nr, nc), Map[nr][nc])) 
 
     dijkstra(start)
